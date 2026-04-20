@@ -86,7 +86,7 @@ export default function RetraitPage() {
   }
 
   const credits    = userData?.credits ?? 0;
-  const canRequest = credits >= 10 && !pendingWithdrawal;
+  const canRequest = credits >= 20 && !pendingWithdrawal;
 
   return (
     <>
@@ -110,9 +110,9 @@ export default function RetraitPage() {
             <h1 className="text-3xl font-extrabold text-white">Demander un retrait</h1>
             <p className="text-discord-muted mt-2">
               Tu as <span className="text-white font-semibold">{credits} crédit{credits !== 1 ? 's' : ''}</span>.
-              {credits >= 10
+              {credits >= 20
                 ? ' Tu peux demander ton bon Temu de 10€ !'
-                : ` Il te faut encore ${10 - credits} crédit${10 - credits > 1 ? 's' : ''}.`}
+                : ` Il te faut encore ${20 - credits} crédit${20 - credits > 1 ? 's' : ''}.`}
             </p>
           </div>
 
@@ -158,20 +158,27 @@ export default function RetraitPage() {
               {/* Récapitulatif */}
               <div className="bg-discord-medium rounded-lg p-4 mb-6 flex items-center justify-between">
                 <div>
-                  <p className="text-discord-muted text-sm">Montant du retrait</p>
-                  <p className="text-white font-bold text-xl">{credits} crédits = {credits}€</p>
+                  <p className="text-discord-muted text-sm">Crédits actuels</p>
+                  <p className="text-white font-bold text-xl">{credits} / 20 crédits</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-discord-muted text-sm">Valeur en bon Temu</p>
-                  <p className="text-discord-green font-bold text-xl">{credits}€</p>
+                  <p className="text-discord-muted text-sm">Valeur du bon Temu</p>
+                  <p className="text-discord-green font-bold text-xl">10€</p>
                 </div>
               </div>
 
               {!canRequest ? (
                 <div className="text-center py-6">
                   <p className="text-discord-muted">
-                    Il te faut au moins <span className="text-white font-semibold">10 crédits</span> pour faire un retrait.
+                    Il te faut au moins <span className="text-white font-semibold">20 crédits</span> pour faire un retrait.
                   </p>
+                  <div className="mt-4 bg-discord-medium rounded-full h-3 overflow-hidden">
+                    <div
+                      className="bg-discord-blurple h-full rounded-full transition-all duration-500"
+                      style={{ width: `${Math.min((credits / 20) * 100, 100)}%` }}
+                    />
+                  </div>
+                  <p className="text-discord-muted text-sm mt-2">{credits} / 20 crédits</p>
                   <Link href="/dashboard" className="btn-primary inline-block mt-4">
                     ← Retour à ma cagnotte
                   </Link>
