@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-discord-darkest text-white font-sans antialiased;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-discord-dark;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-discord-muted rounded-full;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-discord-dark border border-discord-light/20 rounded-xl p-6;
+  }
+
+  .btn-primary {
+    @apply bg-discord-blurple hover:bg-indigo-500 text-white font-semibold
+           px-6 py-3 rounded-lg transition-all duration-200
+           disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply bg-discord-medium hover:bg-discord-light text-white font-medium
+           px-4 py-2 rounded-lg transition-all duration-200;
+  }
+
+  .btn-success {
+    @apply bg-discord-green hover:bg-green-400 text-discord-darkest font-semibold
+           px-4 py-2 rounded-lg transition-all duration-200;
+  }
+
+  .btn-danger {
+    @apply bg-discord-red hover:bg-red-400 text-white font-semibold
+           px-4 py-2 rounded-lg transition-all duration-200;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold;
+  }
+
+  .badge-pending  { @apply bg-discord-yellow/20 text-discord-yellow; }
+  .badge-paid     { @apply bg-discord-green/20  text-discord-green;  }
+  .badge-rejected { @apply bg-discord-red/20    text-discord-red;    }
+  .badge-result   { @apply bg-discord-blurple/20 text-indigo-300;    }
+  .badge-testimonial { @apply bg-purple-500/20 text-purple-300;      }
+  .badge-withdrawal  { @apply bg-discord-red/20 text-discord-red;    }
+}
